@@ -28,6 +28,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
 
     body = request.get_data(as_text=True)
+
     app.logger.info("Request body: " + body)
 
     try:
@@ -54,32 +55,36 @@ def handle_message(event):
     if user_message.find('WTM') != -1:    
         
         res_message = TemplateSendMessage(
-            alt_text='わため推廣主選單',
+            alt_text='WTM',
             template=ButtonsTemplate(
                 columns=[
                     CarouselColumn(
                         thumbnail_image_url='https://images.plurk.com/4wqrmDmQcXOcQYHpoPN8bq.jpg',
                         title='わため推廣主選單',
-                        text='依照需要的資訊選擇下面的按鈕',
+                        text='依照需要的資訊選擇下面的按鈕！',
                         actions=[
                             URITemplateAction(
                                 label='現正直播',
-                                uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/live'
+                                uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/live/'
                             ),
                             URITemplateAction(
                                 label='官方推特',
                                 uri='https://twitter.com/tsunomakiwatame'
                             ),
                         ]
-                    )
+                    ),
                 ]
             )
         )
-            line_bot_api.reply_message(event.reply_token,res_message)
-            return 0
+        
+        line_bot_api.reply_message(event.reply_token,res_message)
+        return 0
+    
 ###############################################################################
 import os
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 27017))
-    app.run(debug=ture, port=port)
+    app.run(host='0.0.0.0', port=port)
+if __name__ == "__main__":
+    app.run()
