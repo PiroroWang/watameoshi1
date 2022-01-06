@@ -56,20 +56,25 @@ def handle_message(event):
         res_message = TemplateSendMessage(
             alt_text='わため推廣主選單',
             template=ButtonsTemplate(
-                thumbnail_image_url='https://images.plurk.com/4wqrmDmQcXOcQYHpoPN8bq.jpg', 
-                title='わため推廣主選單',
-                text='依照需要的資訊選擇下面的按鈕',
-                actions=[
-                    URITemplateAction(
-                        label='現正直播',
-                        uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/live'
-                        ),
-                    URITemplateAction(
-                        label='官方推特',
-                        uri='https://twitter.com/tsunomakiwatame'
-                        ),
-                    ]
-                )
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://images.plurk.com/4wqrmDmQcXOcQYHpoPN8bq.jpg',
+                        title='わため推廣主選單',
+                        text='依照需要的資訊選擇下面的按鈕',
+                        actions=[
+                            URITemplateAction(
+                                label='現正直播',
+                                uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/live'
+                            ),
+                            URITemplateAction(
+                                label='官方推特',
+                                uri='https://twitter.com/tsunomakiwatame'
+                            ),
+                        ]
+                    )
+                ]
+            )
+        )
             line_bot_api.reply_message(event.reply_token,res_message)
             return 0
 ###############################################################################
