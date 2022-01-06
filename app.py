@@ -23,22 +23,36 @@ handler = WebhookHandler('522aa923d6da396c664d6220a2020f7c')
 line_bot_api.push_message('', TextSendMessage(text='系統測試中，若您覺得訊息干擾到您，您可以將聊天室設為靜音，謝謝喔！'))
 
 @app.route("/callback", methods=['POST'])
+# 接收 LINE 的資訊
+@app.route("/callback", methods=['POST'])
 def callback():
-    # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
-    # get request body as text
     body = request.get_data(as_text=True)
-
     app.logger.info("Request body: " + body)
 
-    # handle webhook body
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
 
     return 'OK'
+
+# 學你說話
+@handler.add(MessageEvent, message=TextMessage)
+def echo(event):
+    
+    # 這次我加了下面這一行
+    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+    # 這次我加了上面這一行
+    
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
+
+if __name__ == "__main__":
+    app.run()
 
 ######################處理LINE USER 傳來得訊息 ###############################
 @handler.add(MessageEvent, message=TextMessage)
