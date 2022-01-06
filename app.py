@@ -38,51 +38,10 @@ def callback():
 
     return 'OK'
 
-# 學你說話
-@handler.add(MessageEvent, message=TextMessage)
-def echo(event):
-    
-    # 這次我加了下面這一行
-    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-    # 這次我加了上面這一行
-    
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
 
-if __name__ == "__main__":
-    app.run()
 
 ######################處理LINE USER 傳來得訊息 ###############################
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    # get user id when reply
-    
-    profile = line_bot_api.get_profile(event.source.user_id)
-    nameid = profile.display_name     #使用者名稱
-    uid = profile.user_id             #使用者ID  
-    user_message=str(event.message.text) 
-    
 
-        #user_message='圖文訊息'
-    if user_message.find('WTM') != -1:    
-        
-        res_message = TemplateSendMessage(
-            alt_text='わため推廣主選單',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://images.plurk.com/4wqrmDmQcXOcQYHpoPN8bq.jpg', 
-                title='わため推廣主選單',
-                text='依照需要的資訊選擇下面的按鈕',
-                actions=[
-                    URITemplateAction(
-                        label='現正直播',
-                        uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/live'
-                        ),
-                    URITemplateAction(
-                        label='官方推特',
-                        uri='https://twitter.com/tsunomakiwatame'
-                        ),
 
 ###############################################################################
 import os
