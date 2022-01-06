@@ -10,6 +10,7 @@ from flask import Flask, request, abort
 from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
+import QA_Col
 import random
 
 app = Flask(__name__)
@@ -67,7 +68,10 @@ def handle_message(event):
                         label='官方推特',
                         uri='https://twitter.com/tsunomakiwatame'
                         ),
-
+                    ]
+                )
+            line_bot_api.reply_message(event.reply_token,res_message)
+            return 0
 ###############################################################################
 import os
 
