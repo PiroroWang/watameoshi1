@@ -57,8 +57,6 @@ def handle_message(event):
         res_message = TemplateSendMessage(
             alt_text='WTM',
             template=ButtonsTemplate(
-                columns=[
-                    CarouselColumn(
                         thumbnail_image_url='https://images.plurk.com/4wqrmDmQcXOcQYHpoPN8bq.jpg',
                         title='わため推廣主選單',
                         text='依照需要的資訊選擇下面的按鈕！',
@@ -77,10 +75,7 @@ def handle_message(event):
                             ),
                         ]
                     ),
-                ]
-            )
-        )
-        
+                )
         line_bot_api.reply_message(event.reply_token,res_message)
         return 0
     
