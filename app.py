@@ -16,7 +16,7 @@ import random
 app = Flask(__name__)
 
 
-line_bot_api = LineBotApi('4Wqfqtn7bLGCno3diBfYQUUd1cACeiV7DR17OyrzhBeFwh7NlhXmKO9IEE20eagny+d2H2aJiDYxLaEjhegfws3uY8+hcccOpz/q+XfAjyLHin8qV/M9dg6LH+3Hf0RmmA4F/qVoCpF5ZXanZUTk7wdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('xsJdbSEB9Xb6aL+/UHEjqK/EkIvOnZ4IIJXQ7zbne5uJw4v6pVF8zXI80Nunf1XrQAJZ7sZsYhvGKr7kdidH3UMWtNXi3r0aE+T3TsPFNT7ekppRzOycrVbE6189L8se3bzHY248syY8ilILP/ByZAdB04t89/1O/w1cDnyilFU=')
 
 handler = WebhookHandler('522aa923d6da396c664d6220a2020f7c')
 
