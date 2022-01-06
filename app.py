@@ -52,12 +52,12 @@ def handle_message(event):
     
 
         #user_message='圖文訊息'
-    if user_message.find('圖文訊息') != -1:    
+    if user_message.find('WTM') != -1:    
         
         res_message = TemplateSendMessage(
-            alt_text='圖文訊息',
-            template = CarouselTemplate(
-                columns=[
+            alt_text='わため推廣主選單',
+            template=ButtonsTemplate(
+                thumbnail_image_url='', 
 #-----------------------------------------------------------------------------                    
                     CarouselColumn(
                         # thumbnail_image_url='',
