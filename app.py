@@ -71,6 +71,10 @@ def handle_message(event):
                                 label='官方推特',
                                 uri='https://twitter.com/tsunomakiwatame'
                             ),
+                            URITemplateAction(
+                                label='其他頻道',
+                                uri='https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA/channels'
+                            ),
                         ]
                     ),
                 ]
